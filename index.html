@@ -86,6 +86,16 @@
             background-size: 15px 15px;
             opacity: 0.05;
         }
+
+        /* Filter to colorize the black PNG logo to Beep Orange (#EC6608) */
+        .logo-colored {
+            filter: brightness(0) saturate(100%) invert(46%) sepia(85%) saturate(1900%) hue-rotate(350deg) brightness(97%) contrast(95%);
+        }
+
+        /* Filter to make the black PNG logo white */
+        .logo-white {
+            filter: brightness(0) invert(1);
+        }
     </style>
 </head>
 
@@ -101,13 +111,14 @@
 
         <!-- Header -->
         <div
-            class="bg-gray-50 relative px-10 py-16 text-center border-b border-beepDark/10 overflow-hidden flex flex-col items-center justify-center">
-            <div class="absolute inset-0 pattern-bg pointer-events-none"></div>
+            class="bg-beepOrange relative px-10 py-16 text-center overflow-hidden flex flex-col items-center justify-center">
+            <div class="absolute inset-0 pattern-bg opacity-10 pointer-events-none"></div>
 
-            <img src="logo.png" alt="شعار Beep Cup" class="relative z-10 h-48 md:h-64 object-contain mb-2">
+            <img src="logo.png" alt="شعار Beep Cup"
+                class="relative z-10 h-48 md:h-64 object-contain mb-2 logo-white shadow-sm drop-shadow-lg transition-all hover:scale-105 duration-300">
 
             <div
-                class="mt-6 inline-block bg-white/80 px-4 py-1 rounded-full text-beepOrange text-sm font-bold tracking-widest backdrop-blur-sm relative z-10 border border-beepOrange/20 shadow-sm">
+                class="mt-6 inline-block bg-white/20 px-6 py-2 rounded-full text-white text-sm font-bold tracking-widest backdrop-blur-md relative z-10 border border-white/30 shadow-sm">
                 لوحة الهوية البصرية | BRAND BOARD
             </div>
         </div>
@@ -122,21 +133,22 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center">
-                        <img src="logo.png" alt="الشعار الأساسي" class="h-32 object-contain mb-4">
+                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300">
+                        <img src="logo.png" alt="الشعار الأساسي"
+                            class="h-32 object-contain mb-4 logo-colored transition-transform group-hover:scale-110 duration-300 drop-shadow-sm">
                         <span class="text-xs text-gray-500 font-arabic">الشعار الأساسي (Primary)</span>
                     </div>
                     <div
-                        class="bg-beepDark p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center">
+                        class="bg-beepDark p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-black transition-colors duration-300">
                         <img src="logo.png" alt="شعاري على خلفية داكنة"
-                            class="h-32 object-contain brightness-0 invert mb-4 opacity-90">
+                            class="h-32 object-contain brightness-0 invert mb-4 opacity-90 transition-transform group-hover:scale-110 duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                         <span class="text-xs text-gray-300 font-arabic">الخيار العكسي (Reversed)</span>
                     </div>
                 </div>
 
                 <!-- Download Button -->
                 <div class="flex justify-center">
-                    <a href="logo.pdf" download="Beep_cup_logo.pdf"
+                    <a href="logo.pdf" download="BeepCup_logo.pdf"
                         class="flex items-center gap-3 bg-beepOrange text-white px-8 py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="w-6 h-6 transition-transform group-hover:translate-y-1" fill="none"
