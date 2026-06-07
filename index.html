@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة الهوية البصرية | Beep Cup</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Note: Arabic Typesetting and Baskerville Old Face might not be available directly on Google Fonts with those exact names. 
+         Using closest available alternatives for web safety or system fonts if possible. 
+         For Arabic: 'Aref Ruqaa' or similar traditional serif.
+         For English: 'Libre Baskerville' as a close alternative to Baskerville Old Face. -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        bnvGrey: '#ec6608',   /* الرمادي الترابي للخلفية */
-                        bnvBeige: '#2A2A29',  /* البيج الرملي للنصوص */
+                        beepOrange: '#EC6608', // Primary color
+                        beepDark: '#2A2A29',   // Secondary color
                     },
                     fontFamily: {
-                        'arabic-serif': ['"Arabic Typesetting"', 'Amiri', 'serif'],
-                        'english-serif': ['"Baskerville Old Face"', '"Playfair Display"', 'Georgia', 'serif'],
-                        'logo-sans': ['Montserrat', 'sans-serif'],
-                        'arabic-body': ['Tajawal', 'sans-serif'],
+                        // Using system fonts as fallbacks for the specific requested fonts if they aren't installed locally
+                        'arabic': ['"Arabic Typesetting"', '"Aref Ruqaa"', 'serif'],
+                        'english': ['"Baskerville Old Face"', '"Libre Baskerville"', 'serif'],
                     }
                 }
             }
@@ -29,104 +36,173 @@
     </script>
     <style>
         body {
-            background-color: #f7f0e4;
-            /* خلفية ناعمة جداً تبرز اللوحة */
+            /* Warm, inviting premium cream gradient resembling latte foam and high-end paper */
+            background: linear-gradient(135deg, #FFF8F0 0%, #F5EAE0 50%, #E8DCCB 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Subtle grid pattern overlay to give an agency/creative board feel */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(to right, rgba(236, 102, 8, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(236, 102, 8, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Enhanced soft background ambient glow matching Beep Orange */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -15%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(236, 102, 8, 0.06) 0%, transparent 60%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Enhanced soft background ambient glow matching Beep Dark */
+        .ambient-glow-2 {
+            position: absolute;
+            bottom: -5%;
+            left: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(42, 42, 41, 0.04) 0%, transparent 60%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .pattern-bg {
-            background-image: radial-gradient(#DACBB4 0.5px, transparent 0.5px);
-            background-size: 20px 20px;
+            background-image: radial-gradient(#2A2A29 0.5px, transparent 0.5px);
+            background-size: 15px 15px;
             opacity: 0.05;
         }
     </style>
 </head>
 
-<body class="font-arabic-body text-gray-800 antialiased py-12 px-4 sm:px-8">
+<body class="font-arabic text-gray-800 antialiased py-12 px-4 sm:px-8 relative overflow-x-hidden">
+
+    <!-- Ambient decorative glows -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
 
     <!-- Brand Board Container -->
-    <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden relative border border-gray-100">
+    <div
+        class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden relative border border-gray-100/80 z-10">
 
-        <!-- Header (Hero Section representing the Brand) -->
+        <!-- Header -->
         <div
-            class="bg-bnvGrey relative px-10 py-24 text-center overflow-hidden flex flex-col items-center justify-center">
+            class="bg-gray-50 relative px-10 py-16 text-center border-b border-beepDark/10 overflow-hidden flex flex-col items-center justify-center">
             <div class="absolute inset-0 pattern-bg pointer-events-none"></div>
 
-            <!-- محاكاة الشعار المرفق كنص في حال لم يتم وضع الصورة -->
-            <img src="logo.png" alt="شعار BNV" class="relative z-10 h-48 md:h-64 object-contain mb-2"
-                onerror="this.outerHTML='<div class=\'text-bnvBeige text-center relative z-10\'><h1 class=\'font-arabic-serif text-8xl md:text-[9rem] leading-none mb-4\'>BNV</h1><p class=\'font-logo-sans text-xl md:text-3xl tracking-[0.2em] md:tracking-[0.3em] font-light\'>Beyond Normal Vibes</p><div class=\'mt-8 flex items-center justify-center gap-4 opacity-80\'><div class=\'w-16 h-[1px] bg-bnvBeige\'></div><svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'#DACBB4\' stroke=\'none\'><path d=\'M17 8c-.5 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm-4 0c-.5 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm-4 0c-.5 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm8 4c0 4.418-3.582 8-8 8s-8-3.582-8-8c0-2.482 1.134-4.697 2.91-6.146.406-.33 1-.042 1 .477v2.669c0 2.209 1.791 4 4 4s4-1.791 4-4v-2.669c0-.519.594-.807 1-.477 1.776 1.449 2.91 3.664 2.91 6.146z\'/></svg><div class=\'w-16 h-[1px] bg-bnvBeige\'></div></div></div>'">
+            <img src="logo.png" alt="شعار Beep Cup" class="relative z-10 h-48 md:h-64 object-contain mb-2">
 
-            <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center relative z-10">
-                <!-- زر تحميل الشعار PDF -->
-                <a href="logo.pdf" download="BeepCup_Logo.pdf"
-                    class="inline-flex items-center gap-2 bg-bnvBeige text-bnvGrey px-6 py-2 rounded-full text-sm font-arabic-body font-bold hover:bg-white transition-colors duration-300 shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    تحميل الشعار (PDF)
-                </a>
+            <div
+                class="mt-6 inline-block bg-white/80 px-4 py-1 rounded-full text-beepOrange text-sm font-bold tracking-widest backdrop-blur-sm relative z-10 border border-beepOrange/20 shadow-sm">
+                لوحة الهوية البصرية | BRAND BOARD
             </div>
         </div>
 
         <div class="p-10 md:p-16 space-y-20">
 
+            <!-- Logo Section -->
+            <section>
+                <div class="flex items-center gap-4 mb-10 border-b pb-4">
+                    <div class="w-2 h-8 bg-beepOrange rounded-full"></div>
+                    <h2 class="font-arabic text-3xl font-bold text-beepDark">الشعار (Brand Logo)</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+                    <div
+                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center">
+                        <img src="logo.png" alt="الشعار الأساسي" class="h-32 object-contain mb-4">
+                        <span class="text-xs text-gray-500 font-arabic">الشعار الأساسي (Primary)</span>
+                    </div>
+                    <div
+                        class="bg-beepDark p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center">
+                        <img src="logo.png" alt="شعاري على خلفية داكنة"
+                            class="h-32 object-contain brightness-0 invert mb-4 opacity-90">
+                        <span class="text-xs text-gray-300 font-arabic">الخيار العكسي (Reversed)</span>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <div class="flex justify-center">
+                    <a href="logo.png" download
+                        class="flex items-center gap-3 bg-beepOrange text-white px-8 py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-6 h-6 transition-transform group-hover:translate-y-1" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span class="font-arabic text-lg">تحميل الشعار | Download Logo</span>
+                    </a>
+                </div>
+            </section>
+
             <!-- Colors Section -->
             <section>
-                <div class="flex items-center gap-4 mb-10 border-b border-gray-100 pb-4">
-                    <div class="w-2 h-8 bg-bnvGrey rounded-full"></div>
-                    <h2 class="font-arabic-body text-3xl font-bold text-bnvGrey">الألوان الرئيسية (Color Palette)</h2>
+                <div class="flex items-center gap-4 mb-10 border-b pb-4">
+                    <div class="w-2 h-8 bg-beepOrange rounded-full"></div>
+                    <h2 class="font-arabic text-3xl font-bold text-beepDark">لوحة الألوان (Color Palette)</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Color 1: Slate Grey -->
+                    <!-- Color 1: Primary Orange -->
                     <div
-                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-32 h-32 rounded-full bg-bnvGrey shadow-lg shrink-0 border-4 border-white"></div>
+                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-32 h-32 rounded-full bg-beepOrange shadow-lg shrink-0 border-4 border-white">
+                        </div>
                         <div class="text-center sm:text-right w-full">
-                            <h3 class="font-arabic-body text-2xl font-bold text-bnvGrey mb-1">برتقالي ناري</h3>
-                            <p class="font-logo-sans text-gray-500 text-sm mb-4 tracking-wider uppercase">Fire Orange
-                            </p>
+                            <h3 class="font-arabic text-2xl font-bold text-beepOrange mb-1">برتقالي</h3>
+                            <p class="font-english text-gray-500 text-sm mb-4">Primary Orange</p>
 
-                            <div class="space-y-2 text-sm font-mono bg-gray-50 p-3 rounded-xl border border-gray-100">
+                            <div class="space-y-2 text-sm font-sans bg-white p-3 rounded-xl border">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">HEX</span>
-                                    <span class="font-bold text-bnvGrey">#ec6608</span>
+                                    <span class="text-gray-400 font-arabic">HEX</span>
+                                    <span class="font-bold text-beepOrange">#EC6608</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">RGB</span>
+                                    <span class="text-gray-400 font-arabic">RGB</span>
                                     <span class="text-gray-700">236, 102, 8</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">CMYK</span>
-                                    <span class="text-gray-700">0, 70, 100, 0</span>
+                                    <span class="text-gray-400 font-arabic">CMYK</span>
+                                    <span class="text-gray-700">0, 68, 100, 0</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Color 2: Sand Beige -->
+                    <!-- Color 2: Secondary Dark -->
                     <div
-                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-32 h-32 rounded-full bg-bnvBeige shadow-inner shrink-0 border-4 border-white">
-                        </div>
+                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-32 h-32 rounded-full bg-beepDark shadow-lg shrink-0 border-4 border-white"></div>
                         <div class="text-center sm:text-right w-full">
-                            <h3 class="font-arabic-body text-2xl font-bold text-[#2A2A29] mb-1">أسود غامق</h3>
-                            <p class="font-logo-sans text-gray-500 text-sm mb-4 tracking-wider uppercase">Black</p>
+                            <h3 class="font-arabic text-2xl font-bold text-beepDark mb-1">رمادي داكن</h3>
+                            <p class="font-english text-gray-500 text-sm mb-4">Secondary Dark</p>
 
-                            <div class="space-y-2 text-sm font-mono bg-gray-50 p-3 rounded-xl border border-gray-100">
+                            <div class="space-y-2 text-sm font-sans bg-white p-3 rounded-xl border">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">HEX</span>
-                                    <span class="font-bold" style="color: #2A2A29;">#2A2A29</span>
+                                    <span class="text-gray-400 font-arabic">HEX</span>
+                                    <span class="font-bold text-beepDark">#2A2A29</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">RGB</span>
+                                    <span class="text-gray-400 font-arabic">RGB</span>
                                     <span class="text-gray-700">42, 42, 41</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-400 font-arabic-body">CMYK</span>
-                                    <span class="text-gray-700">0, 0, 0, 96</span>
+                                    <span class="text-gray-400 font-arabic">CMYK</span>
+                                    <span class="text-gray-700">69, 63, 62, 69</span>
                                 </div>
                             </div>
                         </div>
@@ -136,55 +212,52 @@
 
             <!-- Typography Section -->
             <section>
-                <div class="flex items-center gap-4 mb-10 border-b border-gray-100 pb-4">
-                    <div class="w-2 h-8 bg-bnvBeige rounded-full"></div>
-                    <h2 class="font-arabic-body text-3xl font-bold text-bnvGrey">الخطوط (Typography)</h2>
+                <div class="flex items-center gap-4 mb-10 border-b pb-4">
+                    <div class="w-2 h-8 bg-beepDark rounded-full border border-beepOrange/20"></div>
+                    <h2 class="font-arabic text-3xl font-bold text-beepDark">الخطوط (Typography)</h2>
                 </div>
 
                 <div class="space-y-8">
-                    <!-- Font 1: Cormorant Garamond (Logo) -->
-                    <div class="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <!-- Font 1: Arabic Typesetting -->
+                    <div class="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                             <div>
                                 <span
-                                    class="text-xs font-bold text-white bg-bnvGrey px-3 py-1 rounded-full mb-2 inline-block font-logo-sans tracking-wide">PRIMARY
-                                    الخط العربي</span>
-                                <h3 class="font-arabic-serif text-3xl text-bnvGrey">Cormorant Garamond</h3>
+                                    class="text-xs font-bold text-white bg-beepOrange px-3 py-1 rounded-full mb-2 inline-block">الخط
+                                    العربي</span>
+                                <h3 class="font-arabic text-3xl text-beepDark">Arabic Typesetting <span
+                                        class="font-english text-xl text-gray-400 ml-2">Arabic</span></h3>
                             </div>
                             <div
-                                class="text-left font-arabic-serif text-gray-400 text-2xl w-full md:w-auto text-right md:text-left">
-                                أ ب ت ث ج ح خ | ٠ ١ ٢ ٣ ٤
+                                class="text-left font-arabic text-gray-400 text-xl w-full md:w-auto text-right md:text-left">
+                                أ ب ت ث ج ح خ د ذ ر ز س ش ص ض
                             </div>
                         </div>
-                        <div class="p-6 bg-bnvGrey rounded-xl text-center">
-                            <p class="font-arabic-serif text-6xl text-bnvBeige leading-relaxed">
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
+                            <p class="font-arabic text-5xl text-gray-800 leading-relaxed text-center">
                                 قهوتك اليوم وكل يوم
                             </p>
                         </div>
                     </div>
 
-                    <!-- Font 3: Tajawal (Arabic Support) -->
-                    <div class="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <!-- Font 2: Baskerville Old Face -->
+                    <div class="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                             <div>
                                 <span
-                                    class="text-xs font-bold text-gray-500 bg-gray-200 px-3 py-1 rounded-full mb-2 inline-block font-logo-sans tracking-wide">English
-                                    Font</span>
-                                <h3 class="font-arabic-body text-2xl font-bold text-gray-800">خط تجوّل <span
-                                        class="font-logo-sans text-sm text-gray-400 font-normal ml-2">Tajawal</span>
-                                </h3>
-                                <p class="text-sm text-gray-400 mt-1">خط عصري بسيط يتناسب مع بساطة الهوية للنصوص العربية
-                                </p>
+                                    class="text-xs font-bold text-white bg-beepDark px-3 py-1 rounded-full mb-2 inline-block">الخط
+                                    الإنجليزي (English Texts)</span>
+                                <h3 class="font-english text-3xl text-beepDark">Baskerville Old Face <span
+                                        class="font-arabic text-xl text-gray-400 font-normal ml-2">إنجليزي</span></h3>
                             </div>
                             <div
-                                class="text-left font-english-serif text-gray-400 text-lg w-full md:w-auto text-right md:text-left">
-                                0 1 2 3 4 | A B C D E
+                                class="text-left font-english italic text-gray-400 text-xl w-full md:w-auto text-right md:text-left">
+                                Aa Bb Cc Dd Ee Ff Gg
                             </div>
                         </div>
-                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                            <p class="font-english-serif text-xl text-gray-600 leading-relaxed font-light">
-                                نحن في Beep Cup نقدم تجربة تفوق المعتاد. صُممت قهوتنا لتمنحك إيحاءات استثنائية وأجواء
-                                مميزة تصنع يومك.
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 text-left" dir="ltr">
+                            <p class="font-english text-4xl text-gray-800 leading-relaxed italic text-center">
+                                Your coffee today and everyday
                             </p>
                         </div>
                     </div>
