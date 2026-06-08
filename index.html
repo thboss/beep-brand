@@ -131,32 +131,62 @@
                     <div class="w-2 h-8 bg-beepOrange rounded-full"></div>
                     <h2 class="font-arabic text-3xl font-bold text-beepDark">الشعار (Brand Logo)</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+
+                <!-- 3-Column Responsive Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                    <!-- Option 1: Primary Logo -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300">
-                        <img src="logo.png" alt="الشعار الأساسي"
-                            class="h-32 object-contain mb-4 logo-colored transition-transform group-hover:scale-110 duration-300 drop-shadow-sm">
-                        <span class="text-xs text-gray-500 font-arabic">الشعار الأساسي (Primary)</span>
+                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300 shadow-sm">
+                        <div class="h-36 flex items-center justify-center mb-4">
+                            <img src="logo.png" alt="الشعار الأساسي"
+                                class="max-h-32 object-contain logo-colored transition-transform group-hover:scale-110 duration-300 drop-shadow-sm">
+                        </div>
+                        <span class="text-xs text-gray-500 font-arabic text-center">الشعار الأساسي (Primary)</span>
                     </div>
+
+                    <!-- Option 2: Reversed Logo -->
                     <div
                         class="bg-beepOrange p-8 rounded-2xl border border-white/10 flex flex-col items-center justify-center group hover:bg-[#d55b07] transition-colors duration-300 shadow-md">
-                        <img src="logo.png" alt="الشعار باللون الأبيض"
-                            class="h-32 object-contain brightness-0 invert mb-4 opacity-100 transition-transform group-hover:scale-110 duration-300 drop-shadow-md">
-                        <span class="text-xs text-white/90 font-arabic">الخيار العكسي (Reversed)</span>
+                        <div class="h-36 flex items-center justify-center mb-4">
+                            <img src="logo.png" alt="الشعار باللون الأبيض"
+                                class="max-h-32 object-contain brightness-0 invert opacity-100 transition-transform group-hover:scale-110 duration-300 drop-shadow-md">
+                        </div>
+                        <span class="text-xs text-white/90 font-arabic text-center">الخيار العكسي (Reversed)</span>
+                    </div>
+
+                    <!-- Option 3: Illustrative / Mascot Logo -->
+                    <div
+                        class="bg-beepDark p-8 rounded-2xl border border-gray-800 flex flex-col items-center justify-center group hover:bg-[#20201f] transition-colors duration-300 shadow-md">
+                        <div class="h-36 flex items-center justify-center mb-4">
+                            <img src="logo2.png" alt="الشعار التوضيحي"
+                                class="max-h-36 object-contain transition-transform group-hover:scale-110 duration-300 drop-shadow-lg">
+                        </div>
+                        <span class="text-xs text-white/80 font-arabic text-center">الشعار الثانوي (Illustrative)</span>
                     </div>
                 </div>
 
                 <!-- Download Button -->
-                <div class="flex justify-center">
-                    <a href="logo.pdf" download="BeepCup_logo.pdf"
-                        class="flex items-center gap-3 bg-beepOrange text-white px-8 py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="logo.pdf" download
+                        class="flex items-center gap-3 bg-beepOrange text-white px-6 py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-6 h-6 transition-transform group-hover:translate-y-1" fill="none"
+                            class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        <span class="font-arabic text-lg">تحميل الشعار | Download Logo</span>
+                        <span class="font-arabic text-md">تحميل الشعار الأساسي</span>
+                    </a>
+
+                    <a href="logo2.pdf" download
+                        class="flex items-center gap-3 bg-beepDark text-white px-6 py-4 rounded-xl font-bold hover:bg-[#1f1f1e] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span class="font-arabic text-md">تحميل الشعار التوضيحي</span>
                     </a>
                 </div>
             </section>
@@ -189,7 +219,7 @@
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-400 font-arabic">CMYK</span>
-                                    <span class="text-gray-700">0, 70, 100, 0</span>
+                                    <span class="text-gray-700">0, 68, 100, 0</span>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +244,7 @@
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-400 font-arabic">CMYK</span>
-                                    <span class="text-gray-700">0, 0, 0, 96</span>
+                                    <span class="text-gray-700">69, 63, 62, 69</span>
                                 </div>
                             </div>
                         </div>
