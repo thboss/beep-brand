@@ -26,9 +26,11 @@
                         beepDark: '#2A2A29',   // Secondary color
                     },
                     fontFamily: {
-                        // Using system fonts as fallbacks for the specific requested fonts if they aren't installed locally
                         'arabic': ['"Arabic Typesetting"', '"Aref Ruqaa"', 'serif'],
                         'english': ['"Baskerville Old Face"', '"Libre Baskerville"', 'serif'],
+                    },
+                    screens: {
+                        'xs': '375px',
                     }
                 }
             }
@@ -52,7 +54,7 @@
             background-image:
                 linear-gradient(to right, rgba(236, 102, 8, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(236, 102, 8, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-size: 30px 30px;
         }
 
         /* Enhanced soft background ambient glow matching Beep Orange */
@@ -60,10 +62,10 @@
             position: absolute;
             top: -15%;
             right: -10%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(236, 102, 8, 0.06) 0%, transparent 60%);
-            filter: blur(80px);
+            width: min(700px, 100vw);
+            height: min(700px, 100vw);
+            background: radial-gradient(circle, rgba(236, 102, 8, 0.05) 0%, transparent 60%);
+            filter: blur(60px);
             pointer-events: none;
             z-index: 0;
         }
@@ -73,10 +75,10 @@
             position: absolute;
             bottom: -5%;
             left: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(42, 42, 41, 0.04) 0%, transparent 60%);
-            filter: blur(100px);
+            width: min(800px, 100vw);
+            height: min(800px, 100vw);
+            background: radial-gradient(circle, rgba(42, 42, 41, 0.03) 0%, transparent 60%);
+            filter: blur(80px);
             pointer-events: none;
             z-index: 0;
         }
@@ -99,7 +101,7 @@
     </style>
 </head>
 
-<body class="font-arabic text-gray-800 antialiased py-12 px-4 sm:px-8 relative overflow-x-hidden">
+<body class="font-arabic text-gray-800 antialiased py-6 sm:py-12 px-3 sm:px-8 relative overflow-x-hidden">
 
     <!-- Ambient decorative glows -->
     <div class="ambient-glow-1"></div>
@@ -107,108 +109,112 @@
 
     <!-- Brand Board Container -->
     <div
-        class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden relative border border-gray-100/80 z-10">
+        class="max-w-5xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl overflow-hidden relative border border-gray-100/80 z-10">
 
         <!-- Header -->
         <div
-            class="bg-beepOrange relative px-10 py-16 text-center overflow-hidden flex flex-col items-center justify-center">
+            class="bg-beepOrange relative px-6 py-12 sm:px-10 sm:py-16 text-center overflow-hidden flex flex-col items-center justify-center">
             <div class="absolute inset-0 pattern-bg opacity-10 pointer-events-none"></div>
 
             <img src="logo.png" alt="شعار Beep Cup"
-                class="relative z-10 h-48 md:h-64 object-contain mb-2 logo-white shadow-sm drop-shadow-lg transition-all hover:scale-105 duration-300">
+                class="relative z-10 h-32 xs:h-40 sm:h-48 md:h-64 max-w-full object-contain mb-2 logo-white shadow-sm drop-shadow-lg transition-all hover:scale-105 duration-300">
 
             <div
-                class="mt-6 inline-block bg-white/20 px-6 py-2 rounded-full text-white text-sm font-bold tracking-widest backdrop-blur-md relative z-10 border border-white/30 shadow-sm">
+                class="mt-4 sm:mt-6 inline-block bg-white/20 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full text-white text-xs sm:text-sm font-bold tracking-widest backdrop-blur-md relative z-10 border border-white/30 shadow-sm">
                 لوحة الهوية البصرية | BRAND BOARD
             </div>
         </div>
 
-        <div class="p-10 md:p-16 space-y-20">
+        <div class="p-5 sm:p-10 md:p-16 space-y-12 sm:space-y-20">
 
             <!-- Logo Section -->
             <section>
-                <div class="flex items-center gap-4 mb-10 border-b pb-4">
-                    <div class="w-2 h-8 bg-beepOrange rounded-full"></div>
-                    <h2 class="font-arabic text-3xl font-bold text-beepDark">الشعار (Brand Logo)</h2>
+                <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10 border-b pb-4">
+                    <div class="w-1.5 sm:w-2 h-6 sm:h-8 bg-beepOrange rounded-full"></div>
+                    <h2 class="font-arabic text-2xl sm:text-3xl font-bold text-beepDark">الشعار (Brand Logo)</h2>
                 </div>
 
                 <!-- 3-Column Responsive Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 mb-6 sm:mb-10">
                     <!-- Option 1: Primary Logo -->
                     <div
-                        class="bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300 shadow-sm">
-                        <div class="h-36 flex items-center justify-center mb-4">
+                        class="bg-gray-50 p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300 shadow-sm">
+                        <div class="h-28 sm:h-36 flex items-center justify-center mb-3 sm:mb-4">
                             <img src="logo.png" alt="الشعار الأساسي"
-                                class="max-h-32 object-contain logo-colored transition-transform group-hover:scale-110 duration-300 drop-shadow-sm">
+                                class="max-h-24 sm:max-h-32 object-contain logo-colored transition-transform group-hover:scale-110 duration-300 drop-shadow-sm">
                         </div>
                         <span class="text-xs text-gray-500 font-arabic text-center">الشعار الأساسي (Primary)</span>
                     </div>
 
                     <!-- Option 2: Reversed Logo -->
                     <div
-                        class="bg-beepOrange p-8 rounded-2xl border border-white/10 flex flex-col items-center justify-center group hover:bg-[#d55b07] transition-colors duration-300 shadow-md">
-                        <div class="h-36 flex items-center justify-center mb-4">
+                        class="bg-beepOrange p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-white/10 flex flex-col items-center justify-center group hover:bg-[#d55b07] transition-colors duration-300 shadow-md">
+                        <div class="h-28 sm:h-36 flex items-center justify-center mb-3 sm:mb-4">
                             <img src="logo.png" alt="الشعار باللون الأبيض"
-                                class="max-h-32 object-contain brightness-0 invert opacity-100 transition-transform group-hover:scale-110 duration-300 drop-shadow-md">
+                                class="max-h-24 sm:max-h-32 object-contain brightness-0 invert opacity-100 transition-transform group-hover:scale-110 duration-300 drop-shadow-md">
                         </div>
                         <span class="text-xs text-white/90 font-arabic text-center">الخيار العكسي (Reversed)</span>
                     </div>
 
                     <!-- Option 3: Illustrative / Mascot Logo -->
                     <div
-                        class="bg-beepDark p-8 rounded-2xl border border-gray-800 flex flex-col items-center justify-center group hover:bg-[#20201f] transition-colors duration-300 shadow-md">
-                        <div class="h-36 flex items-center justify-center mb-4">
+                        class="bg-gray-50 p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-100 flex flex-col items-center justify-center group hover:bg-white transition-colors duration-300 shadow-sm">
+                        <div class="h-28 sm:h-36 flex items-center justify-center mb-3 sm:mb-4">
                             <img src="logo2.png" alt="الشعار التوضيحي"
-                                class="max-h-36 object-contain transition-transform group-hover:scale-110 duration-300 drop-shadow-lg">
+                                class="max-h-24 sm:max-h-36 object-contain transition-transform group-hover:scale-110 duration-300 drop-shadow-lg">
                         </div>
-                        <span class="text-xs text-white/80 font-arabic text-center">الشعار الثانوي (Illustrative)</span>
+                        <span class="text-xs text-gray-500 font-arabic text-center">الشعار الثانوي (Illustrative)</span>
                     </div>
                 </div>
 
-                <!-- Download Button -->
-                <div class="flex justify-center gap-4 flex-wrap">
+                <!-- Download Buttons -->
+                <div class="flex flex-col xs:flex-row justify-center gap-3 xs:gap-4">
                     <a href="logo.pdf" download
-                        class="flex items-center gap-3 bg-beepOrange text-white px-6 py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
+                        class="flex items-center justify-center gap-3 bg-beepOrange text-white px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl font-bold hover:bg-[#d55b07] transition-all shadow-md hover:shadow-lg active:scale-95 group text-sm sm:text-base w-full xs:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        <span class="font-arabic text-md">تحميل الشعار الأساسي</span>
+                        <span class="font-arabic">تحميل الشعار الأساسي</span>
                     </a>
 
                     <a href="logo2.pdf" download
-                        class="flex items-center gap-3 bg-beepDark text-white px-6 py-4 rounded-xl font-bold hover:bg-[#1f1f1e] transition-all shadow-lg hover:shadow-xl active:scale-95 group">
+                        class="flex items-center justify-center gap-3 bg-beepDark text-white px-5 py-3.5 sm:px-6 sm:py-4 rounded-xl font-bold hover:bg-[#1f1f1e] transition-all shadow-md hover:shadow-lg active:scale-95 group text-sm sm:text-base w-full xs:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        <span class="font-arabic text-md">تحميل الشعار التوضيحي</span>
+                        <span class="font-arabic">تحميل الشعار الثانوي</span>
                     </a>
                 </div>
             </section>
 
             <!-- Colors Section -->
             <section>
-                <div class="flex items-center gap-4 mb-10 border-b pb-4">
-                    <div class="w-2 h-8 bg-beepOrange rounded-full"></div>
-                    <h2 class="font-arabic text-3xl font-bold text-beepDark">لوحة الألوان (Color Palette)</h2>
+                <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10 border-b pb-4">
+                    <div class="w-1.5 sm:w-2 h-6 sm:h-8 bg-beepOrange rounded-full"></div>
+                    <h2 class="font-arabic text-2xl sm:text-3xl font-bold text-beepDark">لوحة الألوان (Color Palette)
+                    </h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                     <!-- Color 1: Primary Orange -->
                     <div
-                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
-                        <div class="w-32 h-32 rounded-full bg-beepOrange shadow-lg shrink-0 border-4 border-white">
+                        class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-beepOrange shadow-lg shrink-0 border-4 border-white">
                         </div>
                         <div class="text-center sm:text-right w-full">
-                            <h3 class="font-arabic text-2xl font-bold text-beepOrange mb-1">برتقالي</h3>
-                            <p class="font-english text-gray-500 text-sm mb-4">Primary Orange</p>
+                            <h3 class="font-arabic text-xl sm:text-2xl font-bold text-beepOrange mb-0.5 sm:mb-1">برتقالي
+                            </h3>
+                            <p class="font-english text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4">Primary Orange</p>
 
-                            <div class="space-y-2 text-sm font-sans bg-white p-3 rounded-xl border">
+                            <div
+                                class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm font-sans bg-white p-2.5 sm:p-3 rounded-xl border">
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-400 font-arabic">HEX</span>
                                     <span class="font-bold text-beepOrange">#EC6608</span>
@@ -227,13 +233,17 @@
 
                     <!-- Color 2: Secondary Dark -->
                     <div
-                        class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
-                        <div class="w-32 h-32 rounded-full bg-beepDark shadow-lg shrink-0 border-4 border-white"></div>
+                        class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-beepDark shadow-lg shrink-0 border-4 border-white">
+                        </div>
                         <div class="text-center sm:text-right w-full">
-                            <h3 class="font-arabic text-2xl font-bold text-beepDark mb-1">رمادي داكن</h3>
-                            <p class="font-english text-gray-500 text-sm mb-4">Secondary Dark</p>
+                            <h3 class="font-arabic text-xl sm:text-2xl font-bold text-beepDark mb-0.5 sm:mb-1">رمادي
+                                داكن</h3>
+                            <p class="font-english text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4">Secondary Dark</p>
 
-                            <div class="space-y-2 text-sm font-sans bg-white p-3 rounded-xl border">
+                            <div
+                                class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm font-sans bg-white p-2.5 sm:p-3 rounded-xl border">
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-400 font-arabic">HEX</span>
                                     <span class="font-bold text-beepDark">#2A2A29</span>
@@ -254,51 +264,56 @@
 
             <!-- Typography Section -->
             <section>
-                <div class="flex items-center gap-4 mb-10 border-b pb-4">
-                    <div class="w-2 h-8 bg-beepDark rounded-full border border-beepOrange/20"></div>
-                    <h2 class="font-arabic text-3xl font-bold text-beepDark">الخطوط (Typography)</h2>
+                <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10 border-b pb-4">
+                    <div class="w-1.5 sm:w-2 h-6 sm:h-8 bg-beepDark rounded-full border border-beepOrange/20"></div>
+                    <h2 class="font-arabic text-2xl sm:text-3xl font-bold text-beepDark">الخطوط (Typography)</h2>
                 </div>
 
-                <div class="space-y-8">
+                <div class="space-y-6 sm:space-y-8">
                     <!-- Font 1: Arabic Typesetting -->
-                    <div class="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <div class="p-5 sm:p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 gap-3 sm:gap-4">
                             <div>
                                 <span
-                                    class="text-xs font-bold text-white bg-beepOrange px-3 py-1 rounded-full mb-2 inline-block">الخط
+                                    class="text-[10px] sm:text-xs font-bold text-white bg-beepOrange px-2.5 py-1 rounded-full mb-1.5 sm:mb-2 inline-block">الخط
                                     العربي</span>
-                                <h3 class="font-arabic text-3xl text-beepDark">Arabic Typesetting <span
-                                        class="font-english text-xl text-gray-400 ml-2">Arabic</span></h3>
+                                <h3 class="font-arabic text-2xl sm:text-3xl text-beepDark">Arabic Typesetting <span
+                                        class="font-english text-lg sm:text-xl text-gray-400 ml-2">Arabic</span></h3>
                             </div>
                             <div
-                                class="text-left font-arabic text-gray-400 text-xl w-full md:w-auto text-right md:text-left">
+                                class="text-right md:text-left font-arabic text-gray-400 text-lg sm:text-xl w-full md:w-auto">
                                 أ ب ت ث ج ح خ د ذ ر ز س ش ص ض
                             </div>
                         </div>
-                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                            <p class="font-arabic text-5xl text-gray-800 leading-relaxed text-center">
+                        <div class="p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-100">
+                            <p
+                                class="font-arabic text-3xl xs:text-4xl sm:text-5xl text-gray-800 leading-relaxed text-center break-words">
                                 قهوتك اليوم وكل يوم
                             </p>
                         </div>
                     </div>
 
                     <!-- Font 2: Baskerville Old Face -->
-                    <div class="p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                    <div class="p-5 sm:p-8 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 gap-3 sm:gap-4">
                             <div>
                                 <span
-                                    class="text-xs font-bold text-white bg-beepDark px-3 py-1 rounded-full mb-2 inline-block">الخط
+                                    class="text-[10px] sm:text-xs font-bold text-white bg-beepDark px-2.5 py-1 rounded-full mb-1.5 sm:mb-2 inline-block">الخط
                                     الإنجليزي (English Texts)</span>
-                                <h3 class="font-english text-3xl text-beepDark">Baskerville Old Face <span
-                                        class="font-arabic text-xl text-gray-400 font-normal ml-2">إنجليزي</span></h3>
+                                <h3 class="font-english text-2xl sm:text-3xl text-beepDark">Baskerville Old Face <span
+                                        class="font-arabic text-lg sm:text-xl text-gray-400 font-normal ml-2">إنجليزي</span>
+                                </h3>
                             </div>
-                            <div
-                                class="text-left font-english italic text-gray-400 text-xl w-full md:w-auto text-right md:text-left">
+                            <div class="text-right md:text-left font-english italic text-gray-400 text-lg sm:text-xl w-full md:w-auto"
+                                dir="ltr">
                                 Aa Bb Cc Dd Ee Ff Gg
                             </div>
                         </div>
-                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-100 text-left" dir="ltr">
-                            <p class="font-english text-4xl text-gray-800 leading-relaxed italic text-center">
+                        <div class="p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-100 text-left" dir="ltr">
+                            <p
+                                class="font-english text-2xl xs:text-3xl sm:text-4xl text-gray-800 leading-relaxed italic text-center break-words">
                                 Your coffee today and everyday
                             </p>
                         </div>
